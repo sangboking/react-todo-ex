@@ -1,39 +1,42 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import './App.css';
+import Form from './components/Form';
+import List from './components/List';
+import Title from './components/Title';
 
-export default class App extends Component {
-  btnStyle = {
-    color: "#fff",
-    border: "none",
-    padding: "5px 9px",
-    borderRadius: "50%",
-    cusor: "pointer",
-    float: "right"
+export default function App(){
+  const [todoData, setTodoData] = useState([]);
+  const [value, setValue] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    let newTodo = {
+      id: Date.now(),
+      title: value,
+      completed: false
+    };
+
+    setTodoData(prev => [...prev, newTodo]);
+    setValue("");
   };
 
-  getStyle = () => {
-    return {
-      padding: "10px",
-      borderBottom: "1px #ccc dotted",
-      textDecoration: "none",
-    }
-  };
+  return (
+    <div className='flex items-center justify-center w-screen h-screen bg-blue-100'>
+      <div className='w-full p-4 m-4 bg-white rounded shadow lg:w-3/4 lg:max-w-lg'>
+       <Title />
 
-  render() {
-    return (
-      <div className='container'>
-        <div className='todoBlock'>
-          <div className='title'>
-            <h1>할 일 목록</h1>
-          </div>
+        <List 
+          todoData={todoData}
+          setTodoData={setTodoData}
+        />
 
-          <div style={this.getStyle()}>
-            <input type='checkbox' defaultCheckd={false} />
-            공부하기
-            <button style={this.btnStyle}>x</button>
-          </div>
-        </div>
+        <Form 
+          value={value}
+          setValue={setValue}
+          handleSubmit={handleSubmit}
+        />
       </div>
-    )
-  }
+    </div>
+  )
 };
