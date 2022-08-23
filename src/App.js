@@ -21,6 +21,7 @@ export default function App(){
     setValue("");
   };
 
+  console.log('app rendering')
   return (
     <div className='flex items-center justify-center w-screen h-screen bg-blue-100'>
       <div className='w-full p-4 m-4 bg-white rounded shadow lg:w-3/4 lg:max-w-lg'>

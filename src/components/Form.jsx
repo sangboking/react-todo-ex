@@ -6,6 +6,7 @@ export default function Form({ value, setValue, handleSubmit}) {
     setValue(e.target.value);
   };
 
+  console.log('form rendering')
   return (
     <form
       className='flex pt-2' 
