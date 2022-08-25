@@ -1,0 +1,42 @@
+{
+  "env": { 
+      "browser": true, 
+      "es6": true,
+      "node": true 
+  },
+  "parserOptions": {
+      "ecmaVersion": 2020
+  },
+  "extends": ["airbnb", "plugin:prettier/recommended"],
+  "rules": {
+      "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+      "import/no-unresolved": "off",
+      "react/prop-types": 0,
+      "no-use-before-define":"off",
+      "no-unused-vars":"off",
+      "react/jsx-no-useless-fragment": "off",
+      "no-nested-ternary":"off",
+      "import/no-cylce": "off",
+      "no-param-reassign":"off",
+      "react/no-array-index-key":"off",
+      "no-unsafe-optional-chaining": "off",
+      "consistent-return":"off",
+      "jsx-a11y/label-has-associated-control":"off",
+      "react/no-unstable-nested-components" :"off",
+      "no-shadow":"off",
+      "array-callback-return":"off",
+      "no-plusplus":"off",
+      "no-loop-func":"off",
+      "no-return-assign":"off",
+      "import/order":"off",
+      "react/no-unescaped-entities":"off",
+      "camelcase":"off",
+      "jsx-a11y/click-events-have-key-events":"off",
+      "jsx-a11y/no-static-element-interactions":"off",
+      "react/jsx-props-no-spreading":"off",
+      "no-empty":"off",
+      "react/destructuring-assignment": "off",
+      "no-octal-escape": "off",
+      "no-unused-expressions": "off"
+  }
+}
