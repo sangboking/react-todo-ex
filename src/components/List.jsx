@@ -12,7 +12,6 @@ const List = React.memo(({ todoData, setTodoData, handleClick }) => {
     setTodoData(newTodoData);
   };
 
-  console.log('list rendering');
   return (
     <div>
       <DragDropContext onDragEnd={handleEnd}>

@@ -45,8 +45,9 @@ const Lists = React.memo(
 
         <div>
           <button
+            type="submit"
             className="px-4 py-2 float-right"
-            onClick={() => handleClick(todoData, setTodoData, id)}
+            onClick={() => handleClick(id)}
           >
             x
           </button>
