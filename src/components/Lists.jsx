@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const Lists = React.memo(
   ({
@@ -11,6 +11,9 @@ const Lists = React.memo(
     snapshot,
     handleClick,
   }) => {
+    const [isEditing, setIsEditing] = useState(false);
+    const [editedTitle, setEditedTitle] = useState(title);
+
     const handleCompleteChange = id => {
       const newTodoData = todoData.map(data => {
         if (data.id === id) {
@@ -21,6 +24,59 @@ const Lists = React.memo(
 
       setTodoData(newTodoData);
     };
+
+    const handleEditChange = e => {
+      setEditedTitle(e.target.value);
+    };
+
+    const handleSubmit = e => {
+      e.preventDefault();
+
+      const newTodoData = [...todoData];
+      newTodoData.map(data => {
+        if (data.id === id) {
+          data.title = editedTitle;
+        }
+        return data;
+      });
+      setTodoData(newTodoData);
+      localStorage.setItem('todoData', JSON.stringify(newTodoData));
+      setIsEditing(false);
+    };
+
+    if (isEditing) {
+      return (
+        <div className="flex items-center justify-between w-full px-4 py-1 my-2 bg-gray-100 text-gray-600 border rounded">
+          <div className="item-center">
+            <form onSubmit={handleSubmit}>
+              <input
+                className="w-full px-3 py-2 mr-4 text-gray-500 rounded"
+                value={editedTitle}
+                onChange={handleEditChange}
+              />
+            </form>
+          </div>
+
+          <div>
+            <button
+              type="submit"
+              className="px-4 py-2 float-right"
+              onClick={() => setIsEditing(false)}
+            >
+              x
+            </button>
+
+            <button
+              onClick={handleSubmit}
+              type="submit"
+              className="px-4 py-2 float-right"
+            >
+              save
+            </button>
+          </div>
+        </div>
+      );
+    }
 
     return (
       <div
@@ -45,11 +101,21 @@ const Lists = React.memo(
 
         <div>
           <button
-            type="submit"
+            type="button"
             className="px-4 py-2 float-right"
-            onClick={() => handleClick(id)}
+            onClick={() => {
+              handleClick(id);
+            }}
           >
             x
+          </button>
+
+          <button
+            type="button"
+            className="px-4 py-2 float-right"
+            onClick={() => setIsEditing(true)}
+          >
+            edit
           </button>
         </div>
       </div>

@@ -10,6 +10,7 @@ const List = React.memo(({ todoData, setTodoData, handleClick }) => {
     const [reOrderArr] = newTodoData.splice(result.source.index, 1);
     newTodoData.splice(result.destination.index, 0, reOrderArr);
     setTodoData(newTodoData);
+    localStorage.setItem('todoData', JSON.stringify(newTodoData));
   };
 
   return (

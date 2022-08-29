@@ -37,6 +37,7 @@
       "no-empty":"off",
       "react/destructuring-assignment": "off",
       "no-octal-escape": "off",
-      "no-unused-expressions": "off"
+      "no-unused-expressions": "off",
+      "react/button-has-type" : "off"
   }
 }
